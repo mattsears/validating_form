@@ -1,11 +1,14 @@
 /*
-* Form validation for the the validating_form Rails plugin
+* Form validation script for the the validating_form Rails plugin
 * http://www.mattsears.com/code/validating_form
-* Matt Sears
 * 
 * Originally based on Andrew Tetlaw's 'Really easy
 * field validation', this script has been modified and
 * enhanced to work with the validating_form plugin 
+*
+* Author: Matt Sears
+* Email / matt@mattsears.com
+* Website / www.mattsears.com
 *
 * Copyright (c) 2008 Matt Sears
 * Permission is hereby granted, free of charge, to any person
