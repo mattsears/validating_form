@@ -1,0 +1,4 @@
+require 'validating_form/validating_form_helper'
+require 'validating_form/validating_form_builder'
+require 'validating_form/validating_form_helper_helper'
+require 'validating_form/validation_reflection'
