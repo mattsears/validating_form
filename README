@@ -4,15 +4,12 @@ A Rails plugin that provides client-side form validation based on ActiveRecord::
 
 == INSTALLATION
 
-	script/plugin install git://github.com/mattsears/with_xml.git
+	script/plugin install git://github.com/mattsears/validating_form.git
 	
 == DEMONSTRATION
 
 	http://mattsears.com/code/validating_form/
-
-== INSTALLATION
-
-	script/plugin install git://github.com/mattsears/validating_form.git
+	
 
 == USAGE
 
