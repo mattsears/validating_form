@@ -1,3 +1,5 @@
+**ALPHA - NOT RELEASE READY**
+
 = validating_form
 
 A Rails plugin that provides client-side form validation based on ActiveRecord::Validations::ClassMethods. The key feature of validating_form is the ability to evaluate the ActiveRecord object with a little reflection and determine how to validate the form fields.  In addition, it uses the :message value to display the advice message without calling the controller. Auto-labeling is also included with a few configuration options.
