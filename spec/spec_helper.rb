@@ -5,6 +5,7 @@ require 'test/unit'
 require 'ostruct'
 require 'rubygems'
 require 'spec'
+
 require 'hpricot'
 require 'action_controller'
 require 'action_controller/test_process'
@@ -74,21 +75,35 @@ module TagMatchers
  
   class TagMatcher
  
-    def initialize (expected)
-      @expected = expected
-      @text     = nil
+    def initialize(expected)
+      @expected   = expected
+      @text       = nil
+      @attribute  = nil
+      @value      = nil
     end
  
-    def with_text (text)
+    def with_text(text)
       @text = text
       self
     end
- 
+    
+    def with_attribute(attribute)
+      @attribute = attribute
+      self
+    end
+    
+    def with_value(value)
+      @value = value
+      self
+    end
+    
     def matches? (target)
       @target = target
       doc = Hpricot(target)
       @elem = doc.at(@expected)
-      @elem && (@text.nil? || @elem.inner_html == @text)
+      @elem && (@text.nil? || @elem.inner_html == @text) &&
+               (@attribute.nil? || @elem.has_attribute?(@attribute)) &&
+               (@value.nil? || @elem.get_attribute(@attribute).to_s == @value)
     end
  
     def failure_message
@@ -102,8 +117,12 @@ module TagMatchers
     protected
  
     def match_message
-      if @elem
+      if @elem && @text
         "#{@elem.to_s.inspect} to have text #{@text.inspect}"
+      elsif @elem && @attribute && @value
+        "#{@elem.to_s.inspect} to have attribute #{@attribute.inspect} with value of #{@value.inspect}"
+      elsif @elem && @attribute
+        "#{@elem.to_s.inspect} to have attribute #{@attribute.inspect}"
       else
         "#{@target.inspect} to contain element #{@expected.inspect}"
       end
@@ -125,4 +144,3 @@ end
 require 'validating_form/validating_form_builder'
 require 'schema'
 require 'models'
-

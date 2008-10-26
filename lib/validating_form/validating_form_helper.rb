@@ -82,7 +82,7 @@ module ActionView #:nodoc:
       def extract_html_options!(options, object_name)
         html_options = options[:html] || {}
         html_options[:id] = "#{object_name}_form" if html_options[:id].nil?
-        html_options[:onsubmit] = "var valid = new Validation('#{html_options[:id]}'); return valid.validate();"
+        html_options[:onsubmit] = "var valid = new ValidatingForm('#{html_options[:id]}'); return valid.validate();"
         html_options
       end
 

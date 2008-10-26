@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../models'
 
 describe "reflecting on validation" do
   
-  
   describe User, "calling required_field?" do
     
     it "should determine if a field is required " do
@@ -52,6 +51,13 @@ describe "reflecting on validation" do
     
     it "should return nil if not message exists" do
       User.validation_message_for(:on_update_field).should be_nil
+    end
+    
+  end
+  
+  describe User, "calling if_condition_for" do
+    it "should return the condition method" do
+      User.if_condition_for(:password_confirmation).should == :password_required?
     end
     
   end
