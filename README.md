@@ -3,13 +3,12 @@ validating_form
 
 A simple Rails form builder that evaluates the validation instructions on ActiveRecord objects with a little reflection and automatically mark those form fields as being required. In addition, it will append the validation's :message to the "title" of the form field so that your Javascript can display the same message without making a call to the server. Auto-labeling is also included with a few configuration options.
 
-INSTALLATION
-====
+## Installation ##########################################################
 
     script/plugin install git://github.com/mattsears/validating_form.git
 
-USAGE
-====
+
+## Usage #################################################################
 
 For the ActiveRecord objects, we define the validations normally:
 
@@ -44,8 +43,7 @@ That's it.  The validating_form builder will create the label and form fields as
       </p>
      </form>
 
-MISC
-====
+## Misc #################################################################
 
 The validating_form helper will insert new html elements and attributes. You can customize the html output with the :label hash in each field:
 
@@ -67,9 +65,7 @@ You can also specify global options when the application is initiated so that yo
     :appendix		# Appends a string after each label (<label>Name:</label>)
     :default_class	# Assigns a class to the field (<input class="text" name="user[name]" />)
 
-
-CONTACT
-====
+## Contact #################################################################
 
     Author:     Matt Sears
     Email:      matt@mattsears.com
