@@ -9,7 +9,6 @@ module ActionView #:nodoc:
       @@options = {}
       cattr_accessor :options
 
-      ##
       # A list of supported helpers
       def self.helpers
         ((field_helpers) - %w(form_for fields_for hidden_field file_field field_set ))
@@ -27,18 +26,18 @@ module ActionView #:nodoc:
           render_tag_with_label label, unlabeled_tag, @template
         end
       end
-      
+
       def select(field, choices, options={}, html_options={})
         label = extract_label_options! options, @@options, true
         tag_options = extract_tag_options!(@object_name, "select", field,  html_options, @@options)
-    
+
         unlabeled_tag = super(field, choices, options, tag_options)
         return unlabeled_tag if false == label
         label[:for]  ||= extract_for unlabeled_tag
         label[:text] ||= field.to_s.humanize
         render_tag_with_label label, unlabeled_tag, @template
       end
-      
+
       def country_select(field, choices, options={}, html_options={})
         label = extract_label_options! options, @@options, true
         tag_options = extract_tag_options!(@object_name, "country_select", field,  html_options, @@options)

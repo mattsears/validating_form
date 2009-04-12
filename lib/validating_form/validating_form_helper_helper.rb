@@ -2,7 +2,6 @@ module ValidatingFormHelperHelper #:nodoc:
 
   private
 
-  ##
   # Generates the input and label tags
   def render_tag_with_label(label, unlabeled_tag, template = self)
     label_html = extract_label_html! label
@@ -41,7 +40,7 @@ module ValidatingFormHelperHelper #:nodoc:
 
     # Per the HTML spec..
     label[:for] = options[:id]
-    
+
     # the label options take presedence over the global options
     global_options.merge(label)
   end
@@ -60,7 +59,7 @@ module ValidatingFormHelperHelper #:nodoc:
     if global_options.has_key?(:default_class) && !options.has_key?(:class)
       tag_class << default_class_for(helper, global_options[:default_class])
     end
-    
+
     tag_options["class"] = tag_class.strip unless tag_class.blank?
     tag_options.merge(options)
   end
@@ -85,7 +84,6 @@ module ValidatingFormHelperHelper #:nodoc:
     " #{default_classes[helper.to_sym]}"
   end
 
-  ##
   # Get message from the validation instructions
   def message_for(object_name, field)
     if constantizable?(object_name)
@@ -93,7 +91,6 @@ module ValidatingFormHelperHelper #:nodoc:
     end
   end
 
-  ##
   # Check if the field is required according to the Model's validation instructions
   def required_field?(object_name, field)
     if constantizable?(object_name)
@@ -101,7 +98,6 @@ module ValidatingFormHelperHelper #:nodoc:
     end
   end
 
-  ##
   # Make sure we can contantize an object given the object's name
   def constantizable?(name)
     begin
