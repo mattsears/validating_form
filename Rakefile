@@ -1,15 +1,27 @@
+require 'rubygems'
 require 'rake'
-require 'rake/testtask'
 require 'rake/rdoctask'
+require 'spec/version'
+require 'spec/rake/spectask'
 
 desc 'Default: run unit tests.'
-task :default => :test
+task :default => :spec
 
-desc 'Test the validating_form_helper plugin.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+# Rspec setup
+desc "Run all specs"
+Spec::Rake::SpecTask.new do |t|
+  t.spec_files = FileList['spec/**/*_spec.rb']
+end
+
+namespace :spec do
+  desc "Run all specs with rcov"
+  Spec::Rake::SpecTask.new('rcov') do |t|
+    t.spec_files = FileList['spec/**/*_spec.rb']
+    t.rcov = true
+    t.rcov_dir = 'coverage'
+    t.rcov_opts = ['--exclude',
+                   "spec\/spec,bin\/spec,examples,\.autotest,#{ENV['GEM_HOME']}"]
+  end
 end
 
 desc 'Generate documentation for the validating_form_helper plugin.'
